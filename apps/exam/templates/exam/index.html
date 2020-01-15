@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class = "container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1>Welcome! Let's get to work!</h1>
+            </nav>
+            <div class ="row">
+                <div class ="col -6">
+                    <h2>Registration</h2>
+                    <div class="form-group">
+                        <form action = "/register" name = "reg" method = "POST">
+                        {% csrf_token %}
+                        First Name <input class ="form-control" type = "text" name="first_name">
+                        Last Name <input class ="form-control" type = "text" name="last_name">
+                        Email <input class ="form-control" type = "text" name="email">
+                        Password <input class ="form-control" type = "password" name="pw">
+                        Confirm PW <input class ="form-control" type = "password" name="confirm">
+                        <br>
+                        <input class ="btn btn-primary" type= "submit" name = "submit" value = "Register">
+                        </form>
+                    </div>
+                </div>
+            
+        
+            
+                    <div class = "col-6">
+                        <h2>Login</h2>
+                        <div class="form-group">
+                            <form action = "/login" name= "login" method = "POST">
+                                {% csrf_token %}
+                                Email <input class ="form-control" type = "text" name="login_email">
+                                Password <input class ="form-control" type = "password" name="login_password">
+                                <br>
+                                <input class ="btn btn-primary" type= "submit" name = "submit" value = "Log In">
+                            </form>
+                        </div>
+                    </div>
+                
+            </div>
+            {% if messages %}
+        <div id='messages'>
+        <ul class>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+    </div>
+
+</body>
+</html>
